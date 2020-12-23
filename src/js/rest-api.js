@@ -1,6 +1,6 @@
 "use strict";
 
-const __root__ = "http://localhost/ltw";
+const __root__ = "http://localhost:4000";
 
 let elems = {
     editProfileForm: document.getElementById("edit-user-profile-form"),

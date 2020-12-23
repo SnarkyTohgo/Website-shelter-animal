@@ -76,7 +76,7 @@ CREATE TABLE Message (
     body VARCHAR(200000),
     idSender INTEGER,
     idReceiver INTEGER,
-    hasResponse TINYINT(2),
+    hasResponse TINYINT(2) DEFAULT 0,
     FOREIGN KEY (idSender) REFERENCES User(idUser),
     FOREIGN KEY (idReceiver) REFERENCES User(idUser)
 );
@@ -92,7 +92,7 @@ CREATE TABLE Adopt (
     adoptionDate DATE,
     adoptionProposal VARCHAR(200000),
     proposalResponse TINYINT DEFAULT NULL,
-    responded TINYINT(2),
+    responded TINYINT(2) DEFAULT 0,
     FOREIGN KEY (idUser) REFERENCES User(idUser),
     FOREIGN KEY (idPet) REFERENCES Pet(idPet),
     PRIMARY KEY (idUser, idPet)
