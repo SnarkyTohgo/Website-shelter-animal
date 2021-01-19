@@ -18,7 +18,7 @@
         $pwdHash = password_hash($password, PASSWORD_DEFAULT, $options);
 
         $stmt = $db->prepare('INSERT INTO User (email, password) VALUES(?, ?)');
-        $stmt->execute(array($email, $pwdHash));
+        $stmt->execute(array(htmlspecialchars($email), htmlspecialchars($pwdHash)));
     }
 
     function updateUser($email, $fName, $lName, $addr, $zipCod) {
@@ -32,7 +32,7 @@
                             WHERE email = ?');
 
 
-        $stmt->execute(array($fName, $lName, $addr, $zipCod, $email));        
+        $stmt->execute(array(htmlspecialchars($fName), htmlspecialchars($lName), htmlspecialchars($addr), htmlspecialchars($zipCod), htmlspecialchars($email)));        
     }
 
     function updateUserWithImg($email, $fName, $lName, $addr, $zipCod, $img) {
@@ -47,7 +47,7 @@
                             WHERE email = ?');
 
 
-        $stmt->execute(array($fName, $lName, $addr, $zipCod, $img, $email));        
+        $stmt->execute(array(htmlspecialchars($fName), htmlspecialchars($lName), htmlspecialchars($addr), htmlspecialchars($zipCod), $img, htmlspecialchars($email)));        
     }
 
     function getUserId($email) {

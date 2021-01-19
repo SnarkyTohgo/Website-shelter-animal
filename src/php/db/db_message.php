@@ -20,7 +20,7 @@
         $stmt = $db->prepare('INSERT INTO Message (messageDate, body, idSender, idReceiver)
                                 VALUES (?, ?, ?, ?)');
 
-        $stmt->execute(array($date, $message, $senderId, $receiverId));
+        $stmt->execute(array($date, htmlspecialchars($message), $senderId, $receiverId));
     }
 
     /**

@@ -10,7 +10,7 @@
         $stmt = $db->prepare('INSERT INTO Adopt (idUser, idPet, adoptionProposal)
                                 VALUES (?, ?, ?)');
 
-        $stmt->execute(array($userId, $petId, $message));
+        $stmt->execute(array($userId, $petId, htmlspecialchars($message)));
     }
     
     function updateAdopt($userId, $petId, $response) {
@@ -19,7 +19,7 @@
         $date = date("Y-m-d");
 
         $stmt = $db->prepare('UPDATE Adopt SET adoptionDate = ?, proposalResponse = ?, responded = 1 WHERE idUser = ? AND idPet = ?');
-        $stmt->execute(array($date, $response, $userId, $petId));
+        $stmt->execute(array($date, htmlspecialchars($response), $userId, $petId));
     }
 
     function getAdoptionRequests() {

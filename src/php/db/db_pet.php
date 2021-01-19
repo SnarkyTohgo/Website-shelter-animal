@@ -15,7 +15,7 @@
         $stmt = $db->prepare('INSERT INTO LostAndFound (title, contact, location, email, image, idType)
                                 VALUES (?, ?, ?, ?, ?, ?)');
 
-        $stmt->execute(array($title, $contact, $location, $email, $img, $typeId));
+        $stmt->execute(array(htmlspecialchars($title), htmlspecialchars($contact), htmlspecialchars($location), $email, $img, $typeId));
     }
 
     function insertLostAndFound($title, $contact, $location, $email, $rawType) {
@@ -26,7 +26,7 @@
         $stmt = $db->prepare('INSERT INTO LostAndFound (title, contact, location, email, idType)
                                 VALUES (?, ?, ?, ?, ?, ?)');
 
-        $stmt->execute(array($title, $contact, $location, $email, $typeId));
+        $stmt->execute(array(htmlspecialchars($title), htmlspecialchars($contact), htmlspecialchars($location), $email, $typeId));
     }
 
 
@@ -42,7 +42,7 @@
         $stmt = $db->prepare('INSERT INTO Pet (name, age, gender, weight, location, description, idType, idBreed, idUser)
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
 
-        $stmt->execute(array($name, $age, $gender, $weight, $location, $desc, $typeId, $breedId, $userId));
+        $stmt->execute(array(htmlspecialchars($name), htmlspecialchars($age), htmlspecialchars($gender), htmlspecialchars($weight), htmlspecialchars($location), htmlspecialchars($desc), $typeId, $breedId, $userId));
     }
 
     function insertPetWithImg($email, $name, $location, $age, $weight, $gender, $desc, $img, $rawType, $rawBreed) {
@@ -55,7 +55,7 @@
         $stmt = $db->prepare('INSERT INTO Pet (name, age, gender, weight, location, description, image, idType, idBreed, idUser)
                                 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
 
-        $stmt->execute(array($name, $age, $gender, $weight, $location, $desc, $img, $typeId, $breedId, $userId));
+        $stmt->execute(array(htmlspecialchars($name), htmlspecialchars($age), htmlspecialchars($gender), htmlspecialchars($weight), htmlspecialchars($location), htmlspecialchars($desc), $img, $typeId, $breedId, $userId));
     }
 
 
